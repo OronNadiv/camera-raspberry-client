@@ -1,8 +1,5 @@
-const path = require('path')
-const LOG_PREFIX = `"${path.basename(__filename)}":`
-const log = require('./logger')
-const info = log.info.bind(log, LOG_PREFIX)
-const error = log.error.bind(log, LOG_PREFIX)
+const info = require('debug')('ha:photographer:info')
+const error = require('debug')('ha:photographer:error')
 
 const config = require('./config')
 const moment = require('moment')

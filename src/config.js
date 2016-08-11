@@ -1,9 +1,8 @@
-const path = require('path')
-const LOG_PREFIX = `"${path.basename(__filename)}":`
-const log = require('./logger')
-const error = log.error.bind(log, LOG_PREFIX)
+const error = require('debug')('ha:config:error')
 
 const fs = require('fs')
+const path = require('path')
+
 const config = {production: process.env.NODE_ENV && process.env.NODE_ENV.toUpperCase() === 'PRODUCTION'}
 
 config.loginUrl = process.env.LOGIN_URL || (config.production ? null : 'http://localhost:3001')
