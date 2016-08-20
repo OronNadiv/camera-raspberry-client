@@ -27,7 +27,7 @@
     "http-as-promised": "^1",
     "jsonwebtoken": "^7",
     "jwt-generator": "^2",
-    "moment": ">=2.11.2 <3",
+    "moment": "^2.11.2",
     "pi-gpio": "^0.0.8",
     "raspberry-pi-led": "^1",
     "socket.io-client": "^1"
@@ -42,6 +42,6 @@
     "mocha": "^3",
     "mockery": "^1",
     "nock": "^8",
-    "should": "^10"
+    "should": "^11"
   }
 }
