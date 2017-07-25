@@ -36,7 +36,7 @@ class Photographer {
     const takePhoto = () => {
       info('takePhoto called.')
       const imageName = `image-${moment().valueOf()}.jpg`
-// https://www.raspberrypi.org/documentation/usage/camera/raspicam/raspistill.md
+      // https://www.raspberrypi.org/documentation/usage/camera/raspicam/raspistill.md
       info('calling exec raspistill.  imageName:', imageName)
       return Promise
         .resolve(exec(`raspistill -o ${imageName} -vf`))
