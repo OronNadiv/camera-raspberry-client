@@ -40,7 +40,8 @@ const subscribe = (ledClientUp, events, {subject, audience}) => {
       {
         groupId: decoded.group_id,
         isTrusted: false,
-        token
+        token,
+        uuid: decoded.key
       },
       onMessage,
       onStatus
