@@ -11,6 +11,5 @@ nvm use
 export PRIVATE_KEY= # PASTE GENERATED PRIVATE KEY
 export NODE_ENV=production
 export LOGIN_URL= # https://<LOGIN_SERVER_URL>
-export PUSH_URL= # https://<PUSH_SERVER_URL>
 export STORAGE_URL= # https://<STORAGE_SERVER_URL>
 npm start

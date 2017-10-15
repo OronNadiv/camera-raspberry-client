@@ -11,7 +11,6 @@ Promise
   .resolve(client.run())
   .then(() => info('Client is running.',
     'Login URL:', config.loginUrl,
-    'Push URL:', config.pushUrl,
     'Server URL:', config.serverUrl
   ))
   .catch(err => {

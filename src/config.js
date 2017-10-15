@@ -23,12 +23,6 @@ if (!config.privateKey) {
   process.exit(1)
 }
 
-config.pushUrl = process.env.PUSH_URL || (config.production ? null : 'http://localhost:3005')
-if (!config.pushUrl) {
-  error('Push URL could not be found in the environment variable.  Please set \'PUSH_URL\'.')
-  process.exit(1)
-}
-
 config.storageUrl = process.env.STORAGE_URL || (config.production ? null : 'http://localhost:3006')
 if (!config.storageUrl) {
   error('Storage URL could not be found in the environment variable.  Please set \'STORAGE_URL\'.')

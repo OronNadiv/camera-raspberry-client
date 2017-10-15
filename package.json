@@ -17,34 +17,35 @@
     "cover": "istanbul cover _mocha -- --recursive -t 10000",
     "lint": "eslint .",
     "start": "node src/index",
-    "test": "mocha --recursive -t 10000 && npm run lint",
-    "test-coveralls": "istanbul cover _mocha --report lcovonly -- --recursive -t 10000 -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+    "test": "npm run lint && cross-env DEBUG=\"* -babel\" nyc mocha --recursive -t 10000 --exit",
+    "test:coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
   "dependencies": {
-    "bluebird": "^3",
+    "bluebird": "^3.5.1",
+    "cross-env": "^5.0.5",
     "debug": "^3.1.0",
     "diehard": "^1.5.2",
-    "http-as-promised": "^1",
-    "jsonwebtoken": "^8.0.1",
+    "home-automation-pubnub": "^0.3.0",
+    "http-as-promised": "^1.1.0",
+    "jsonwebtoken": "^8.1.0",
     "jwt-generator": "^2.0.8",
-    "moment": "^2.11.2",
+    "moment": "^2.19.1",
     "pi-gpio": "^0.0.8",
-    "raspberry-pi-led": "^1",
-    "socket.io-client": "^1"
+    "raspberry-pi-led": "^1.0.0",
+    "uuid": "^3.1.0"
   },
   "devDependencies": {
     "coveralls": "^3.0.0",
-    "eslint": "^4",
+    "eslint": "^4.9.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-mocha": "^4.11.0",
     "eslint-plugin-node": "^5.2.0",
-    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
-    "istanbul": "^0.4",
-    "mocha": "^3",
-    "mockery": "^1",
-    "nock": "^8",
-    "should": "^11"
+    "mocha": "^4.0.1",
+    "mockery": "^2.1.0",
+    "nock": "^9.0.22",
+    "nyc": "^11.2.1"
   }
 }
