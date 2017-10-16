@@ -25,14 +25,13 @@
     "cross-env": "^5.0.5",
     "debug": "^3.1.0",
     "diehard": "^1.5.2",
-    "home-automation-pubnub": "^0.4.0",
+    "home-automation-pubnub": "^0.4.4",
     "http-as-promised": "^1.1.0",
     "jsonwebtoken": "^8.1.0",
     "jwt-generator": "^2.0.8",
     "moment": "^2.19.1",
     "pi-gpio": "^0.0.8",
-    "raspberry-pi-led": "^1.0.0",
-    "uuid": "^3.1.0"
+    "raspberry-pi-led": "^1.0.0"
   },
   "devDependencies": {
     "coveralls": "^3.0.0",
