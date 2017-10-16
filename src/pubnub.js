@@ -7,7 +7,7 @@ const config = require('./config')
 const pubnubSubscribe = require('home-automation-pubnub').Subscriber.subscribe
 const {CONNECTED, RECONNECTED, ACCESS_DENIED, NETWORK_DOWN} = require('home-automation-pubnub').ListenerStatuses
 const JWTGenerator = require('jwt-generator')
-const jwtGenerator = new JWTGenerator(config.loginUrl, config.privateKey, true)
+const jwtGenerator = new JWTGenerator({loginUrl: config.loginUrl, privateKey: config.privateKey, useRetry: true})
 const jwt = require('jsonwebtoken')
 const Promise = require('bluebird')
 const diehard = require('diehard')
@@ -77,7 +77,7 @@ const subscribe = (ledClientUp, events, {subject, audience}) => {
             info('calling makeNewToken.',
               'subject:', subject,
               'audience:', audience)
-            return jwtGenerator.makeNewToken(subject, audience)
+            return jwtGenerator.makeNewToken({subject, audience})
           })
           .then(token => {
             info('calling subscribeToPubnub.', 'token:', !!token)
@@ -114,7 +114,7 @@ const subscribe = (ledClientUp, events, {subject, audience}) => {
   }
 
   return Promise
-    .resolve(jwtGenerator.makeToken(subject, audience))
+    .resolve(jwtGenerator.makeToken({subject, audience}))
     .then((token) => subscribeToPubnub(token))
 }
 

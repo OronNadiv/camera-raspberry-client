@@ -4,7 +4,7 @@ const config = require('./config')
 const fs = require('fs')
 const http = require('http-as-promised')
 const JWTGenerator = require('jwt-generator')
-const jwtGenerator = new JWTGenerator(config.loginUrl, config.privateKey, true)
+const jwtGenerator = new JWTGenerator({loginUrl: config.loginUrl, privateKey: config.privateKey, useRetry: true})
 const Promise = require('bluebird')
 const url = require('url')
 
@@ -37,7 +37,7 @@ class Uploader {
     return Promise
       .try(() => {
         info('calling makeToken().')
-        return jwtGenerator.makeToken('/files', 'urn:home-automation/storage')
+        return jwtGenerator.makeToken({subject: '/files', audience: 'urn:home-automation/storage'})
       })
       .then(token => {
         info('token generated successfully.  Uploading image. self.files:', self.files)

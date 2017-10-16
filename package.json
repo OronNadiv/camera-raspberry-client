@@ -28,7 +28,7 @@
     "home-automation-pubnub": "^0.4.4",
     "http-as-promised": "^1.1.0",
     "jsonwebtoken": "^8.1.0",
-    "jwt-generator": "^2.0.8",
+    "jwt-generator": "^3.0.0",
     "moment": "^2.19.1",
     "pi-gpio": "^0.0.8",
     "raspberry-pi-led": "^1.0.0"
