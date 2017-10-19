@@ -14,7 +14,6 @@
     "npm": "^3"
   },
   "scripts": {
-    "cover": "istanbul cover _mocha -- --recursive -t 10000",
     "lint": "eslint .",
     "start": "node src/index",
     "test": "npm run lint && cross-env DEBUG=\"* -babel\" nyc mocha --recursive -t 10000 --exit",
@@ -22,16 +21,16 @@
   },
   "dependencies": {
     "bluebird": "^3.5.1",
-    "cross-env": "^5.0.5",
+    "cross-env": "^5.1.0",
     "debug": "^3.1.0",
     "diehard": "^1.5.2",
-    "home-automation-pubnub": "^0.4.4",
+    "home-automation-pubnub": "^0.4.5",
     "http-as-promised": "^1.1.0",
     "jsonwebtoken": "^8.1.0",
-    "jwt-generator": "^3.0.0",
+    "jwt-generator": "^3.0.1",
     "moment": "^2.19.1",
     "pi-gpio": "^0.0.8",
-    "raspberry-pi-led": "^1.0.0"
+    "raspberry-pi-led": "^2.0.0"
   },
   "devDependencies": {
     "coveralls": "^3.0.0",

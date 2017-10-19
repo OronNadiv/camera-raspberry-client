@@ -48,21 +48,27 @@ const events = [
 
 class Client {
   constructor () {
-    this.ledClientUp = new LED('PIN_CLIENT_UP', config.pins.clientUp)
-    this.ledConnectedToServer = new LED('PIN_CONNECTED_TO_SERVER', config.pins.connectedToServer)
-    this.ledTakingPictures = new LED('PIN_CONNECTED_TO_SERVER', config.pins.takingPictures)
+    this.ledClientUp = config.pins.clientUp < 0
+      ? null
+      : new LED({name: 'PIN_CLIENT_UP', pin: config.pins.clientUp})
+    this.ledConnectedToServer = config.pins.connectedToServer < 0
+      ? null
+      : new LED({name: 'PIN_CONNECTED_TO_SERVER', pin: config.pins.connectedToServer})
+    this.ledTakingPictures = config.pins.takingPictures < 0
+      ? null
+      : new LED({name: 'PIN_TAKING_PICTURES', pin: config.pins.takingPictures})
   }
 
   run () {
     const self = this
 
     return Promise
-      .resolve(self.ledClientUp.initialize())
-      .then(() => self.ledClientUp.turnOn())
-      .then(() => self.ledConnectedToServer.initialize())
-      .then(() => self.ledConnectedToServer.turnOff())
-      .then(() => self.ledTakingPictures.initialize())
-      .then(() => self.ledTakingPictures.turnOff())
+      .try(() => self.ledClientUp && self.ledClientUp.initialize())
+      .then(() => self.ledClientUp && self.ledClientUp.turnOn())
+      .then(() => self.ledConnectedToServer && self.ledConnectedToServer.initialize())
+      .then(() => self.ledConnectedToServer && self.ledConnectedToServer.turnOff())
+      .then(() => self.ledTakingPictures && self.ledTakingPictures.initialize())
+      .then(() => self.ledTakingPictures && self.ledTakingPictures.turnOff())
       .then(() => {
         setInterval(() => {
           Uploader.uploadAll()
