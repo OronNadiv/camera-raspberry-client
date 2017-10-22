@@ -9,6 +9,7 @@ const Photographer = require('./photographer')
 const Promise = require('bluebird')
 const Uploader = require('./uploader')
 const pubnubConnect = require('./pubnub')
+const exit = require('./exit')
 
 const events = [
   {
@@ -18,7 +19,10 @@ const events = [
       info('TAKE_PHOTO called.  data:', data)
       const photographer = new Photographer(data.count, moment().add(moment.duration(data.duration)))
       photographer.takePhotos()
-        .catch(err => error('at TAKE_PHOTO->photographer.takePhotos():', err))
+        .catch(err => {
+          error('at TAKE_PHOTO->photographer.takePhotos():', err)
+          return exit(3)
+        })
     }
   },
   {
@@ -31,7 +35,10 @@ const events = [
       }
       info('Stopping camera.')
       Photographer.stop()
-        .catch(err => error('at Photographer.stop():', err))
+        .catch(err => {
+          error('at Photographer.stop():', err)
+          return exit(4)
+        })
     }
   },
   {
@@ -42,7 +49,10 @@ const events = [
 
       const photographer = new Photographer(0, moment().add(1, 'hours'))
       photographer.takePhotos()
-        .catch(err => error('at MOTION_CREATED->photographer.takePhotos():', err))
+        .catch(err => {
+          error('at MOTION_CREATED->photographer.takePhotos():', err)
+          return exit(5)
+        })
     }
   }]
 

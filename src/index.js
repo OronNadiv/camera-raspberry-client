@@ -6,6 +6,7 @@ const Client = require('./client')
 const config = require('./config')
 
 const client = new Client()
+const exit = require('./exit')
 
 Promise
   .resolve(client.run())
@@ -15,7 +16,7 @@ Promise
   ))
   .catch(err => {
     error('Error while running client.', err)
-    process.exit(1)
+    exit(2)
   })
 
 setInterval(() => verbose('memory:', process.memoryUsage()), 1000 * 60 * 5)
