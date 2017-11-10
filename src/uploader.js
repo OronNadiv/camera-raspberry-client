@@ -53,7 +53,7 @@ class Uploader {
               formData: {
                 image: {
                   options: {
-                    contentType: 'image/jpg',
+                    contentType: 'image/jpeg',
                     filename: file
                   },
                   value: fs.createReadStream(file)
