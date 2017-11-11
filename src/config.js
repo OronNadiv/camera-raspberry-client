@@ -23,9 +23,9 @@ if (!config.privateKey) {
   process.exit(1)
 }
 
-config.storageUrl = process.env.STORAGE_URL || (config.production ? null : 'http://localhost:3006')
-if (!config.storageUrl) {
-  error('Storage URL could not be found in the environment variable.  Please set \'STORAGE_URL\'.')
+config.serverUrl = process.env.SERVER_URL || (config.production ? null : 'http://localhost:3007')
+if (!config.serverUrl) {
+  error('Server URL could not be found in the environment variable.  Please set \'SERVER_URL\'.')
   process.exit(1)
 }
 

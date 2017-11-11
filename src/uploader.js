@@ -37,7 +37,7 @@ class Uploader {
     return Promise
       .try(() => {
         info('calling makeToken().')
-        return jwtGenerator.makeToken({subject: '/files', audience: 'urn:home-automation/storage'})
+        return jwtGenerator.makeToken({subject: '/files', audience: 'urn:home-automation/camera'})
       })
       .then(token => {
         info('token generated successfully.  Uploading image. self.files:', self.files)
@@ -45,7 +45,7 @@ class Uploader {
           info('Uploading.  file:', file)
           return Promise
             .resolve(http({
-              url: url.resolve(config.storageUrl, 'files'),
+              url: url.resolve(config.serverUrl, 'files'),
               method: 'POST',
               auth: {
                 bearer: token

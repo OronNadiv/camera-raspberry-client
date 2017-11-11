@@ -22,7 +22,7 @@ __PINS\_TAKING\_PICTURES__ (optional): GPIO pin (output) that sets to high when 
 __PRIVATE\_KEY__ (required): Generated private key.  Public key should be shared with the [authentication][auth-url] server. See [here][private-public-keys-url].  
 __PUBNUB\_PUBLISH\_KEY__ (required): PubNub's publisher key.  
 __PUBNUB\_SUBSCRIBE\_KEY__ (requireD): = PubNub's subscriber key.  
-__STORAGE\_URL__ (required): url to the [storage][storage-url] server. Example: `storage.herokuapp.com`
+__SERVER\_URL__ (required): url to the [camera][camera-url] server. Example: `camera.herokuapp.com`
 
 \<TODO\> Circuit Diagram
 
@@ -53,5 +53,4 @@ __STORAGE\_URL__ (required): url to the [storage][storage-url] server. Example: 
 [camera-url]: https://github.com/OronNadiv/camera-api
 [garage-url]: https://github.com/OronNadiv/garage-door-api
 [notifications-url]: https://github.com/OronNadiv/notifications-api
-[storage-url]: https://github.com/OronNadiv/storage-api
 [ui-url]: https://github.com/OronNadiv/home-automation-ui

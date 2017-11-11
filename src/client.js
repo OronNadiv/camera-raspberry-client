@@ -95,7 +95,7 @@ class Client {
           events,
           {
             subject: '/files',
-            audience: 'urn:home-automation/storage'
+            audience: 'urn:home-automation/camera'
           }
         )
       })
