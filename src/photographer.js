@@ -6,7 +6,7 @@ const moment = require('moment')
 const Promise = require('bluebird')
 const Uploader = require('./uploader')
 
-const gpio = Promise.promisifyAll(require('pi-gpio'))
+const gpiop = require('rpi-gpio').promise
 const exec = Promise.promisify(require('child_process').exec)
 
 const PIN_TAKING_PICTURES = config.pins.takingPictures
@@ -69,7 +69,7 @@ class Photographer {
         info('Starting to take pictures.')
         return PIN_TAKING_PICTURES < 0
           ? Promise.resolve()
-          : gpio.writeAsync(PIN_TAKING_PICTURES, 1)
+          : gpiop.write(PIN_TAKING_PICTURES, 1)
       })
       .then(repeat)
       .catch(err => error('before finally:', err))
@@ -77,7 +77,7 @@ class Photographer {
         info('Finishing taking pictures.')
         return PIN_TAKING_PICTURES < 0
           ? Promise.resolve()
-          : gpio.writeAsync(PIN_TAKING_PICTURES, 0)
+          : gpiop.write(PIN_TAKING_PICTURES, 0)
       })
   }
 

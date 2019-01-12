@@ -9,21 +9,24 @@ describe('client', () => {
       warnOnUnregistered: false
     })
 
-    const gpio = {
-      write: (pin, value, cb) => {
-        cb()
-      },
-      read: (pin, cb) => {
-        cb()
-      },
-      open: (pin, direction, cb) => {
-        cb()
-      },
-      close: (pin, cb) => {
-        cb()
+    const gpioMock = {
+      DIR_OUT: 'out',
+      promise: {
+        write: () => {
+          return Promise.resolve()
+        },
+        read: () => {
+          return Promise.resolve()
+        },
+        setup: () => {
+          return Promise.resolve()
+        },
+        destroy: () => {
+          return Promise.resolve()
+        }
       }
     }
-    mockery.registerMock('pi-gpio', gpio)
+    mockery.registerMock('rpi-gpio', gpioMock)
 
     const jsonwebtoken = {
       decode: () => {
