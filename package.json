@@ -29,8 +29,8 @@
     "jsonwebtoken": "^8.4.0",
     "jwt-generator": "^3.1.0",
     "moment": "^2.23.0",
+    "raspberry-pi-led": "^2.2.0",
     "rpi-gpio": "^2.1.2",
-    "raspberry-pi-led": "^2.1.0",
     "touch": "^3.1.0"
   },
   "devDependencies": {
