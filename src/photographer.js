@@ -38,8 +38,12 @@ class Photographer {
       const imageName = `image-${moment().valueOf()}.jpg`
       // https://www.raspberrypi.org/documentation/usage/camera/raspicam/raspistill.md
       info('calling exec raspistill.  imageName:', imageName)
+
+      const command = ['raspistill', '-o', imageName]
+      config.verticalFlip && command.push('-vf')
+      config.horizontalFlip && command.push('-hf')
       return Promise
-        .resolve(exec(`raspistill -o ${imageName} -vf`))
+        .resolve(exec(command.join(' ')))
         .then(() => {
           const uploader = new Uploader([imageName])
           uploader.upload()

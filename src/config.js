@@ -31,4 +31,7 @@ if (!config.serverUrl) {
 
 config.delayBetweenPhotos = parseInt(process.env.DELAY_BETWEEN_PHOTOS || 5000, 10)
 
+config.verticalFlip = process.env.VERTICAL_FLIP_IMAGE === 'true'
+config.horizontalFlip = process.env.HORIZONTAL_FLIP_IMAGE === 'true'
+
 module.exports = config
